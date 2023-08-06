@@ -1,14 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import { useState } from 'react';
-
 //To Do
 // * Add Icons to go with Season
 // * Autofill with current Season
 
-function Season() {
-  const [season, setSeason] = useState('');
+function Season({setSeason}) {
+
   return (
     <Form>
       <Form.Label>Which Season is it in?</Form.Label>
@@ -24,7 +22,6 @@ function Season() {
           />
         </div>
       ))}
-      <p>{season}</p>
     </Form>
 
   );

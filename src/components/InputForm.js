@@ -5,8 +5,12 @@ import { Container } from 'react-bootstrap'
 import Season from './Season'
 import Activities from './Activities'
 
+// React Items
+import { useState } from 'react';
+
 
 function InputForm() {
+    const [season, setSeason] = useState('');
 
     return (
         <div>
@@ -14,7 +18,8 @@ function InputForm() {
                 <Container className="p-5 mb-4 bg-light rounded-3">
                     <h1>Activity Details</h1>
                     <hr/>
-                    <Season />
+                    <Season setSeason={setSeason}/>
+                    <p>{season}</p>
                     <Activities />
                 </Container>
             </Container>

@@ -1,52 +1,36 @@
 import Form from 'react-bootstrap/Form';
+import {allActivities, allItems} from "./Data";
 
 import { useState } from "react";
 
-function SwitchExample() {
-
-  const allActivities = [
-    {
-      activity: "Camping",
-      items: ["Sun Glasses"],
-      season: [
-        {
-          Winter: ["Heavy Sleeping Bag"],
-          Spring: ["Heavy Sleeping Bag"],
-          Summer: ["Light Sleeping Bag"],
-          Fall: ["Heavy Sleeping Bag"]
-        }
-      ],
-      bonusActivities: [
-        {
-          cooking: ["Pots", "Pans"]
-        }
-      ]
-    },
-    {
-      activity: "Hiking",
-      items: []
-    },
-    {
-      activity: "Hunting",
-      items: []
-    },
-    {
-      activity: "Fishing",
-      items: ["Rod", "Tackle"]
-    }
-  ]
+function SwitchExample({season, setItemList}) {
 
   const [checkedState, setCheckedState] = useState(
     new Array(allActivities.length).fill(false)
   );
 
-  const handleOnChange = (position) => {
+  const switchChange = (position) => {
+
+    //List of true/false coorsponding to seach activity
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
     );
 
+    //Find Items in to go in ItemsList from Activities
+    let itemList = []
+    updatedCheckedState.map((state, i) => {
+      if(state){
+        allActivities[i].items.map((item) => {
+          itemList.push(item)
+        })
+      }
+    })
+
+    //Remove duplicate Items
+    itemList = [...new Set(itemList)].sort()
+
     setCheckedState(updatedCheckedState);
-    console.log(updatedCheckedState)
+    setItemList(itemList) //This is a list of the items ID's
   };
 
 
@@ -62,7 +46,7 @@ function SwitchExample() {
             name={activity}
             value={activity}
             checked={checkedState[index]}
-            onChange={() => handleOnChange(index)}
+            onChange={() => switchChange(index)}
           />
         </div>
       ))}

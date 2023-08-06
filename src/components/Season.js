@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 // * Add Icons to go with Season
 // * Autofill with current Season
 
-function Season({setSeason}) {
+function Season({ setSeason }) {
 
   return (
     <Form>

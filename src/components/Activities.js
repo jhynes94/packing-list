@@ -1,9 +1,9 @@
 import Form from 'react-bootstrap/Form';
-import {allActivities, allItems} from "./Data";
+import { allActivities } from "./Data";
 
 import { useState } from "react";
 
-function SwitchExample({season, setItemList}) {
+function SwitchExample({ season, setItemList }) {
 
   const [checkedState, setCheckedState] = useState(
     new Array(allActivities.length).fill(false)
@@ -19,7 +19,7 @@ function SwitchExample({season, setItemList}) {
     //Find Items in to go in ItemsList from Activities
     let itemList = []
     updatedCheckedState.map((state, i) => {
-      if(state){
+      if (state) {
         allActivities[i].items.map((item) => {
           itemList.push(item)
         })

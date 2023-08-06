@@ -8,7 +8,6 @@ function TopNav() {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">Packing App</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Text>For all your packing needs.</Navbar.Text>
       </Container>
     </Navbar>
